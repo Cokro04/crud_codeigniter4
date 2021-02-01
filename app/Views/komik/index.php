@@ -9,18 +9,23 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Sampul</th>
+            <th scope="col">Judul</th>
+            <th scope="col">Aksi</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
+          <?php $i = 1 ?>
+          <?php foreach ($komik as $k) : ?>
+            <tr>
+              <th scope="row"><?= $i++; ?></th>
+              <td><img src="<?= base_url('/img'); ?><?= ("/" . $k['sampul']); ?>" class="sampul"></td>
+              <td><?= $k['judul']; ?></td>
+              <td>
+                <a href="<?= base_url('/komik'); ?><?= ("/" . $k['slug']); ?>" class="btn btn-success">Detail</a>
+              </td>
+            </tr>
+          <?php endforeach; ?>
         </tbody>
       </table>
     </div>
