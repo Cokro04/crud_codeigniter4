@@ -81,6 +81,13 @@ class Komik extends BaseController
     return redirect()->to('/komik');
   }
 
+  public function delete($id)
+  {
+    $this->KomikModel->delete($id);
+    session()->setFlashdata('pesan', 'Data Berhasil Dihapus');
+    return redirect()->to('/komik');
+  }
+
   //--------------------------------------------------------------------
 
   // cara konek db tanpa model

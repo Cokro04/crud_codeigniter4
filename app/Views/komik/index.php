@@ -28,7 +28,7 @@
               <td><img src="<?= base_url('/img'); ?><?= ("/" . $k['sampul']); ?>" class="sampul"></td>
               <td><?= $k['judul']; ?></td>
               <td>
-                <a href="<?= base_url('/komik/detail'); ?><?= ("/" . $k['slug']); ?>" class="btn btn-success">Detail</a>
+                <a href="<?= base_url('/komik'); ?><?= ("/" . $k['slug']); ?>" class="btn btn-success">Detail</a>
               </td>
             </tr>
           <?php endforeach; ?>
