@@ -6,7 +6,7 @@
     <div class="col-8">
       <h1 class="my-3">Form Tambah Data</h1>
 
-      <form action="/komik/save" method="post">
+      <form action="/komik/save" method="post" enctype="multipart/form-data">
         <?= csrf_field(); ?>
         <div class="row mb-3">
           <label for="judul" class="col-sm-2 col-form-label">Judul</label>
@@ -32,7 +32,14 @@
         <div class="row mb-3">
           <label for="sampul" class="col-sm-2 col-form-label">Sampul</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="sampul" name="sampul" value="<?= old('sampul'); ?>">
+            <div class="custom-file">
+              <div class="mb-3">
+                <input type="file" class="form-control <?= ($validation->hasError('sampul')) ? 'is-invalid' : ''; ?>" id="sampul" name="sampul">
+                <div class="invalid-feedback">
+                  <?= $validation->getError('sampul'); ?>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <button type="submit" class="btn btn-primary">Tambah Data</button>
@@ -40,4 +47,18 @@
     </div>
   </div>
 </div>
+
+<script>
+  function previewImg() {
+    const sampul = document.querySelector('#sampul');
+    const imgPreview = document.querySelector('.img-preview');
+
+    const fileSampul = new FileReader();
+    fileSampul.readAsDataURL(sampul.file[0]);
+
+    fileSampul.onload = function(e) {
+      imgPreview.src = e.target.result;
+    }
+  }
+</script> >
 <?= $this->endSection(); ?>
